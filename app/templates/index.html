@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fa">
+  <title>Clarity — AI answers, thoughtfully</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="/" aria-label="Clarity home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>clarity</span>
+      </a>
+      <button class="new-chat" id="new-chat" type="button">
+        <span class="plus-icon" aria-hidden="true">+</span> New conversation
+        <span class="shortcut">⌘ K</span>
+      </button>
+      <div class="sidebar-label">YOUR SPACE</div>
+      <p class="history-empty">Your conversations will appear here.</p>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span class="lock-icon" aria-hidden="true">⌑</span><span>Not stored by this app.<br>Prompts are sent to Gemini for answers.</span></div>
+        <div class="user-profile">
+          <div class="avatar">Y</div><div><strong>Your workspace</strong><small>Personal</small></div>
+          <span class="profile-menu" aria-hidden="true">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Toggle navigation"><span></span><span></span></button>
+        <div class="model-selector"><span class="status-dot"></span> Clarity <span class="model-tag">AI</span></div>
+        <button class="top-new-chat" id="top-new-chat" type="button" aria-label="Start a new conversation">＋ <span>New chat</span></button>
+      </header>
+
+      <section class="conversation" id="conversation" aria-live="polite">
+        <div class="welcome" id="welcome">
+          <div class="welcome-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 3.5 23.7 15l11.5 3.7-11.5 3.6L20 33.8l-3.7-11.5L4.8 18.7 16.3 15 20 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m31.2 27 .9 2.8 2.8.9-2.8.9-.9 2.8-.9-2.8-2.8-.9 2.8-.9.9-2.8Z" fill="currentColor"/></svg>
+          </div>
+          <p class="eyebrow">A LITTLE CLARITY GOES A LONG WAY</p>
+          <h1>What’s on your mind?</h1>
+          <p class="welcome-copy">Ask a question, explore an idea, or work through something tricky. I’m here to help.</p>
+          <div class="suggestions" aria-label="Try asking">
+            <button class="suggestion-card" type="button" data-prompt="Explain a complex idea in simple terms">
+              <span class="suggestion-icon lavender">✳</span><span><strong>Make it make sense</strong><small>Explain a complex idea simply</small></span><span class="card-arrow">↗</span>
+            </button>
+            <button class="suggestion-card" type="button" data-prompt="Help me brainstorm a few fresh ideas">
+              <span class="suggestion-icon peach">✎</span><span><strong>Get inspired</strong><small>Brainstorm something new</small></span><span class="card-arrow">↗</span>
+            </button>
+            <button class="suggestion-card" type="button" data-prompt="Help me make a clear step-by-step plan">
+              <span class="suggestion-icon mint">⌁</span><span><strong>Find a way forward</strong><small>Turn a challenge into a plan</small></span><span class="card-arrow">↗</span>
+            </button>
+          </div>
+        </div>
+        <div class="messages" id="messages"></div>
+      </section>
+
+      <div class="composer-wrap">
+        <form class="composer" id="chat-form">
+          <label class="visually-hidden" for="question">Message Clarity</label>
+          <textarea id="question" name="question" rows="1" maxlength="8000" placeholder="Message Clarity..." autocomplete="off"></textarea>
+          <div class="composer-footer">
+            <span class="composer-hint"><span class="sparkle">✧</span> Thoughtful answers, one question at a time</span>
+            <button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15V5m0 0L5.5 9.5M10 5l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </form>
+        <p class="disclaimer">AI can make mistakes. Check important information.</p>
+      </div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</body>
+</html>
